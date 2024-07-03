@@ -1,7 +1,12 @@
 import './home.css'
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import {SIGN_IN_ROUTE} from "../../../routing/consts.js";
 
 const Home = () => {
+
+  const isLogin = useLocation().pathname === SIGN_IN_ROUTE
+  const link = isLogin ? '/account' : '/signIn';
+
   return (
     <div className="home">
       <Link to="/blog" className="home__title">
@@ -16,7 +21,7 @@ const Home = () => {
         </div>
       </Link>
 
-      <Link to="/account" className="home__title">
+      <Link to={link} className="home__title">
         <div>
           <h1>Личный кабинет</h1>
         </div>

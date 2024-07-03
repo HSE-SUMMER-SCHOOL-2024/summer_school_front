@@ -1,5 +1,5 @@
 import Home from "../components/pages/home/Home.jsx";
-import Login from "../components/pages/Login.jsx";
+import Login from "../components/pages/login/Login.jsx";
 import Registration from "../components/pages/Registration.jsx";
 import Account from "../components/pages/account/Account.jsx";
 import Blog from "../components/pages/blog/Blog.jsx";
