@@ -1,0 +1,8 @@
+.formField {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 20em;
+}

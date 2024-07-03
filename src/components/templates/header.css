@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: right;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+
+    background: #7a8571;
+
+    text-align: center;
+
+    opacity: .8;
+    z-index: 10;
+}
+
+.header__title {
+    padding: 40px 20px;
+    border-radius: 16px;
+
+    transition: background-color .2s ease;
+
+    &:hover {
+        color: white;
+        background-color: #9dac93;
+    }
+}

@@ -1,0 +1,10 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+    max-width: 45%;
+    overflow: auto;
+}
+
+.comment {
+
+}

@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+
+    &:link, &:visited {
+        color: #e39036;
+    }
+}
+
+body {
+    background-color: #eefaec;
+    min-height: 100vh;
+}
