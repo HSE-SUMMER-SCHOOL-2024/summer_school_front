@@ -17,6 +17,7 @@ function App() {
     if (token) {
       refreshToken().then(data => {
         dispatch(setAuthAction(data))
+        console.log(data)
         setLoading(false)
       })
         .catch(() => {

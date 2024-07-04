@@ -27,7 +27,7 @@ const Header = () => {
         </div>
       </Link>
 
-      <Link to={link} className="header__title">
+        <Link to={link} className="header__title">
         <div>
           <h1>Личный кабинет</h1>
         </div>

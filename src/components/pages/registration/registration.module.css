@@ -1,0 +1,17 @@
+.registration {
+    display: flex;
+    justify-content: center;
+}
+
+.registrationForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 100px;
+}
+
+.link {
+    margin-left: 10px;
+}

@@ -3,7 +3,6 @@ import Header from "../../templates/Header.jsx";
 import style from "./account.module.css"
 import Info from "./info/Info.jsx";
 
-// eslint-disable-next-line react/prop-types
 function Account() {
   const info = {
     name: 'Vladimir',

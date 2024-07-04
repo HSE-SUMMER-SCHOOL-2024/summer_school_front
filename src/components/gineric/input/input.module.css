@@ -1,0 +1,15 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    margin-top: 20px;
+    gap: 8px 0;
+}
+
+.inputField {
+    height: 30px;
+    
+    padding: 10px;
+}

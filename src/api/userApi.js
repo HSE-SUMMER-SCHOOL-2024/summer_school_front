@@ -9,18 +9,18 @@ export const userLogin = async ({email, password}) => {
     }
   })
 
-  localStorage.setPost('token', data.token)
+  localStorage.setItem('token', data.token)
   return jwtDecode(data.token)
 }
 
 export const userRegistration = async ({email, password, name, surname}) => {
-  const {data} = await $host.post('/users/signUp', {email, password, name, surname}, {
+  const {data} = await $host.post('/users/signUp',{email, password, name, surname}, {
     headers: {
       'content-type': 'application/json'
     }
   })
 
-  localStorage.setPost('token', data.token)
+  localStorage.setItem('token', data.token)
   return jwtDecode(data.token)
 }
 
@@ -37,20 +37,21 @@ export const userLogout = async () => {
   return jwtDecode(data.token)
 }
 
-export const getAllPosts = async ({auth, title, text}) => {
+export const createPost = async ({auth, title, text}) => {
   const {data} = await $authHost.post('/posts', {auth, title, text})
 
   return data
 }
 
 export const getPostById = async () => {
-  const {data} = await $authHost.get('/posts/:userId')
+  const userId = 0;
+  const {data} = await $authHost.get(`/posts/${userId}`)
 
   return data
 }
 
-export const getPostFeed = async () => {
-  const {data} = await $authHost.get('/posts/feed')
+export const getAllPosts = async () => {
+  const {data} = await $host.get('/posts/feed')
 
   return data
 }

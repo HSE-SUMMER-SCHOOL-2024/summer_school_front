@@ -1,0 +1,17 @@
+.login {
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 100px;
+}
+
+.link {
+    margin-left: 10px;
+}

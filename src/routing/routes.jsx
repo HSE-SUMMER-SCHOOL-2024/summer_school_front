@@ -1,6 +1,6 @@
 import Home from "../components/pages/home/Home.jsx";
 import Login from "../components/pages/login/Login.jsx";
-import Registration from "../components/pages/Registration.jsx";
+import Registration from "../components/pages/registration/Registration.jsx";
 import Account from "../components/pages/account/Account.jsx";
 import Blog from "../components/pages/blog/Blog.jsx";
 import Video from "../components/pages/video/Video.jsx";
