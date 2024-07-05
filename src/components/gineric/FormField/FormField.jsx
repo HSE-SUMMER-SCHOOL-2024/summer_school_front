@@ -1,10 +1,17 @@
 import style from "./formField.module.css"
 
-const FormField = (field) => {
+// eslint-disable-next-line react/prop-types
+const FormField = ({label, type, value = '', setValue = () => {}}) => {
   return (
     <label className={style.formField}>
-      {field.label}:
-      <input type={field.type} value={field.value}/>
+      {label}:
+      <input type={type}
+             style={{
+               height: '30px',
+             }}
+             onChange={(e) => setValue(e.target.value)}
+             value={value}
+      />
     </label>
   );
 };

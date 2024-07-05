@@ -9,8 +9,8 @@ export const userLogin = async ({email, password}) => {
     }
   })
 
-  localStorage.setItem('token', data.token)
-  return jwtDecode(data.token)
+  localStorage.setItem('token', data.accessToken)
+  return jwtDecode(data.accessToken)
 }
 
 export const userRegistration = async ({email, password, name, surname}) => {
@@ -20,25 +20,26 @@ export const userRegistration = async ({email, password, name, surname}) => {
     }
   })
 
-  localStorage.setItem('token', data.token)
-  return jwtDecode(data.token)
+  localStorage.setItem('token', data.accessToken)
+  return jwtDecode(data.accessToken)
 }
 
 export const refreshToken = async () => {
   const {data} = await $authHost.get('/users/refreshToken')
 
-  localStorage.setItem('token', data.token)
-  return jwtDecode(data.token)
+  localStorage.setItem('token', data.accessToken)
+  return jwtDecode(data.accessToken)
 }
 
 export const userLogout = async () => {
   const {data} = await $authHost.get('/users/logout')
-  localStorage.removePost('token')
-  return jwtDecode(data.token)
+  localStorage.removeItem('token')
+  return jwtDecode(data.accessToken)
 }
 
-export const createPost = async ({auth, title, text}) => {
-  const {data} = await $authHost.post('/posts', {auth, title, text})
+export const createPost = async (title, text) => {
+  console.log(title, text)
+  const {data} = await $authHost.post('/posts', {title, text})
 
   return data
 }

@@ -1,7 +1,8 @@
 const defaultState = {
   id: "",
   email: "",
-  fullName: "",
+  name: "",
+  surname: "",
   isAuth: false,
 }
 
@@ -17,7 +18,8 @@ export const userReducer = (state = defaultState, action) => {
         isAuth: true,
         id: payload.id,
         email: payload.email,
-        fullName: payload.fullName,
+        name: payload.name,
+        surname: payload.surname,
       }
 
     case SET_NOTAUTH:

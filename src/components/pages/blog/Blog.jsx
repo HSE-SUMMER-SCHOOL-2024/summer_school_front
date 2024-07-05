@@ -3,6 +3,8 @@ import "./blog.css";
 import {useState} from "react";
 import {getAllPosts} from "../../../api/userApi.js";
 import Post from "./post/Post.jsx";
+import {useSelector} from "react-redux";
+import AddPost from "./post/AddPost.jsx";
 
 const Blog = () => {
   const [posts, setPosts] = useState([])
@@ -24,13 +26,25 @@ const Blog = () => {
     )
   }
 
-  return (<div>
-    <Header/>
+  const isAuth = useSelector(state => state.user.isAuth)
+  const user = useSelector(state => state.user)
+  console.log(user)
+  const addPost = isAuth ? <AddPost value={posts} setValue={setPosts}/> : <></>
 
-    <div className="blog">
-      {arr}
-    </div>
-  </div>)
+  return (
+    <div>
+      <Header/>
+
+      <div className="blog">
+        {addPost}
+
+        <h1 style={{
+          marginTop: "30px"
+        }}>Блог</h1>
+
+        {arr}
+      </div>
+    </div>)
 }
 
 export default Blog

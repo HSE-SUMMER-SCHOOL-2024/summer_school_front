@@ -1,11 +1,13 @@
 import Header from "../../templates/Header.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import style from "./login.module.css"
-import {SIGN_UP_ROUTE} from "../../../routing/consts.js";
+import {ACCOUNT_ROUTE, SIGN_UP_ROUTE} from "../../../routing/consts.js";
 import Input from "../../gineric/input/Input.jsx";
 import Button from "../../gineric/Button/Button.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {userLogin} from "../../../api/userApi.js";
+import {setAuthAction} from "../../../store/userReducers.js";
+import {useDispatch, useSelector} from "react-redux";
 
 const Login = () => {
 
@@ -14,12 +16,20 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const click = () => {
-    const user = userLogin({email, password})
+  const isAuth = useSelector(state => state.user.isAuth)
+  const dispatch = useDispatch()
 
-    if (user) {
-      navigate('/account');
+  useEffect(() => {
+    if (isAuth) {
+      navigate(ACCOUNT_ROUTE);
     }
+  }, [isAuth]);
+
+  const click = () => {
+    userLogin({email, password}).then((data) => {
+      console.log(data)
+      dispatch(setAuthAction(data))
+    })
   }
 
   return (

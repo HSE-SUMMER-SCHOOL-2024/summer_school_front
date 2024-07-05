@@ -20,7 +20,7 @@ const Registration = () => {
     const user = userRegistration({email, password, name, surname})
 
     if (user) {
-      navigate('/signIn');
+      navigate(SIGN_IN_ROUTE);
     }
   }
 

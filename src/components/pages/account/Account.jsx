@@ -2,21 +2,18 @@ import './account.module.css'
 import Header from "../../templates/Header.jsx";
 import style from "./account.module.css"
 import Info from "./info/Info.jsx";
+import {useSelector} from "react-redux";
 
 function Account() {
-  const info = {
-    name: 'Vladimir',
-    surname: 'Vinogradov',
-    email: 'vavinogradov@edu.hse.ru',
-  }
+
+  const user = useSelector(state => state.user)
 
   return (
     <div>
       <Header/>
 
       <div className={style.account}>
-        {/* eslint-disable-next-line react/prop-types */}
-        <Info name={info.name} surname={info.surname} email={info.email}/>
+        <Info name={user.name} surname={user.surname} email={user.email}/>
       </div>
     </div>
   )

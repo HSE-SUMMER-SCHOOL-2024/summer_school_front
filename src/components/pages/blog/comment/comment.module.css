@@ -1,7 +1,8 @@
 .comments {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    max-width: 45%;
+    width: 30%;
     overflow: auto;
 }
 
