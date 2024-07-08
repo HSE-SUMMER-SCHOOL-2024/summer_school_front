@@ -4,7 +4,7 @@ const defaultState = {
   auth: "",
   title: "",
   text: "",
-  searchString: 'asd',
+  searchString: '',
 }
 
 
@@ -14,7 +14,6 @@ const SET_SEARCH_STRING = "SET_SEARCH_STRING"
 
 export const postReducer = (state = defaultState, action) => {
   const payload = action.payload
-  console.log(payload)
   switch (action.type) {
     case SET_POST:
       return {

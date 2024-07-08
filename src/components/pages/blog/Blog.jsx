@@ -1,6 +1,6 @@
 import Header from "../../templates/Header.jsx";
 import "./blog.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {getAllPosts} from "../../../api/userApi.js";
 import Post from "./post/Post.jsx";
 import {useSelector} from "react-redux";
@@ -11,14 +11,14 @@ const Blog = () => {
 
     const [posts, setPosts] = useState([])
 
+    console.log('blog')
     const searchString = useSelector(state => state.post.searchString)
 
-    useState(() => {
-        console.log(searchString)
-      getAllPosts(searchString || '').then(data => {
-        setPosts(data)
-        console.log(data)
-      })
+    useEffect(() => {
+        console.log('UseEffect', searchString)
+        getAllPosts(searchString || '').then(data => {
+            setPosts(data)
+        })
     }, [searchString])
 
   const arr = []
@@ -66,8 +66,6 @@ const Blog = () => {
           }}>Блог</h1>
           <Search/>
         </div>
-
-
         {arr}
       </div>
     </div>)
