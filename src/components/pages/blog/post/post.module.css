@@ -6,7 +6,6 @@
 
     margin: 2vh 0;
     padding: 2vh 0;
-    border-bottom: 1px solid saddlebrown;
 }
 
 .content {
@@ -18,9 +17,7 @@
 
     padding: 20px;
 
-    border: 1px solid #5e19c5;
+    border: 1px solid #325a11;
     border-radius: 16px;
-
-    background-color: #cebde8;
 
 }

@@ -5,6 +5,7 @@ import {createPost, getAllPosts} from "../../../../api/userApi.js";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {setPostAction} from "../../../../store/postReducers.js";
+import Search from "../search/Search.jsx";
 
 // eslint-disable-next-line react/prop-types,no-unused-vars
 const AddPost = ({value, setValue}) => {
@@ -15,6 +16,9 @@ const AddPost = ({value, setValue}) => {
   const dispatch = useDispatch()
 
   const click = () => {
+    if (postText === "" || postTitle === "") {
+      alert("Form submitted with value: ");
+    }
     console.log(postTitle, postText)
     createPost(postTitle, postText).then((data) => {
       console.log(data)
@@ -27,6 +31,13 @@ const AddPost = ({value, setValue}) => {
 
   return (
     <div className={style.addPost}>
+
+      <Search/>
+
+      <h1 style={{
+        marginTop: "30px"
+      }}>Создание поста</h1>
+
       <Input text="Название"
              type='input'
              value={postTitle}
@@ -37,7 +48,7 @@ const AddPost = ({value, setValue}) => {
              value={postText}
              setValue={setPostText}
       />
-      <Button text="Опубликовать" onClick={click}/>
+      <Button text="Опубликовать" onClick={click} args={[postText, postTitle]}/>
     </div>
   )
 }

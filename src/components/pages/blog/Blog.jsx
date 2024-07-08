@@ -38,12 +38,6 @@ const Blog = () => {
 
       <div className="blog">
 
-
-
-        <h1 style={{
-          marginTop: "30px"
-        }}>Создание поста</h1>
-
         {addPost}
 
         <h1 style={{

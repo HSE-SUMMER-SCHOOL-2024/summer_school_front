@@ -16,7 +16,7 @@ const AppRouter = () => {
         return <Route key={path} path={path} element={Element}/>
       })}
 
-      <Route path="*" element={<Navigate to="/notFound"/>}/>
+      <Route path="*" element={<Navigate to="/"/>}/>
 
     </Routes>
   )
