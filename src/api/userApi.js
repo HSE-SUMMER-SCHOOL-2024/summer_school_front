@@ -51,8 +51,8 @@ export const getPostById = async () => {
   return data
 }
 
-export const getAllPosts = async () => {
-  const {data} = await $host.get('/posts/feed')
+export const getAllPosts = async (searchString = '') => {
+  const {data} = await $host.get(`/posts/feed?searchString=${searchString}`)
 
   return data
 }

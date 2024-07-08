@@ -5,16 +5,21 @@ import {getAllPosts} from "../../../api/userApi.js";
 import Post from "./post/Post.jsx";
 import {useSelector} from "react-redux";
 import AddPost from "./post/AddPost.jsx";
+import Search from "./search/Search.jsx";
 
 const Blog = () => {
-  const [posts, setPosts] = useState([])
 
-  useState(() => {
-    getAllPosts().then(data => {
-      setPosts(data)
-      console.log(data)
-    })
-  }, [])
+    const [posts, setPosts] = useState([])
+
+    const searchString = useSelector(state => state.post.searchString)
+
+    useState(() => {
+        console.log(searchString)
+      getAllPosts(searchString || '').then(data => {
+        setPosts(data)
+        console.log(data)
+      })
+    }, [searchString])
 
   const arr = []
   for (let i = posts.length - 1; i >= 0; i--) {
@@ -28,9 +33,6 @@ const Blog = () => {
   }
 
   const isAuth = useSelector(state => state.user.isAuth)
-  const user = useSelector(state => state.user)
-  console.log(user)
-  const addPost = isAuth ? <AddPost value={posts} setValue={setPosts}/> : <></>
 
   return (
     <div>
@@ -39,16 +41,32 @@ const Blog = () => {
       <div className="blog">
 
 
+        <div>
+          <div>
+            <h1 style={{
+              marginTop: "30px"
+            }}>Создание поста</h1>
 
-        <h1 style={{
-          marginTop: "30px"
-        }}>Создание поста</h1>
+            {isAuth ? <AddPost value={posts} setValue={setPosts}/> : <></>}
+          </div>
+        </div>
 
-        {addPost}
 
-        <h1 style={{
-          marginTop: "30px"
-        }}>Блог</h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '40px',
+            marginTop:'40px',
+          }}
+        >
+          <h1 style={{
+            margin: 0,
+          }}>Блог</h1>
+          <Search/>
+        </div>
+
 
         {arr}
       </div>

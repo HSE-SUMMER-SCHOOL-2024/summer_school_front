@@ -4,7 +4,7 @@ import { postReducer } from './postReducers.js'
 
 const rootReducer = combineReducers({
   user: userReducer,
-  project: postReducer,
+  post: postReducer,
 })
 
 export const store = createStore(rootReducer)
