@@ -1,39 +1,23 @@
-import {useState} from "react";
-import {getAllPosts} from "../../../../api/userApi.js";
+import React, {useState} from 'react';
+import './search.css'
+import {useDispatch} from "react-redux";
+import {setSearchStringAction} from "../../../../store/postReducers.js";
 
-// eslint-disable-next-line react/prop-types
-const Search = ({posts = [], setPosts}) => {
+const Search = () => {
 
-  const [searchItem, setSearchItem] = useState('')
+    const dispatch = useDispatch()
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearchItem(searchTerm)
+    const [search, setSearch] = useState('')
+
+  const handleSearch = () => {
+      console.log('dispatch', search)
+    dispatch(setSearchStringAction(search));
   }
 
-  useState(() => {
-    getAllPosts().then(data => {
-      setPosts(data)
-      posts = data
-      console.log(data)
-    })
-  }, [])
-
-
-  const data = posts.filter((post) =>
-    post.toLowerCase().includes(setSearchItem.toLowerCase())
-  )
-
-  setPosts(data)
-
   return (
-    <div>
-      <input
-        type="text"
-        value={searchItem}
-        onChange={handleInputChange}
-        placeholder='Type to search'
-      />
+    <div className='searchContainer'>
+      <input onInput={event => setSearch(event.target.value)} />
+      <button onClick={handleSearch}>Search</button>
     </div>
   )
 }
