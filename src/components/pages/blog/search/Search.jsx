@@ -1,7 +1,8 @@
 import {useState} from "react";
 import {getAllPosts} from "../../../../api/userApi.js";
 
-const Search = () => {
+// eslint-disable-next-line react/prop-types
+const Search = ({posts = [], setPosts}) => {
 
   const [searchItem, setSearchItem] = useState('')
 
@@ -10,22 +11,20 @@ const Search = () => {
     setSearchItem(searchTerm)
   }
 
-  const [posts, setPosts] = useState([])
-  const [filteredUsers, setFilteredUsers] = useState(posts)
-
   useState(() => {
     getAllPosts().then(data => {
       setPosts(data)
+      posts = data
       console.log(data)
     })
   }, [])
 
 
-  const filteredItems = posts.filter((user) =>
-    user.firstName.toLowerCase().includes(setSearchItem.toLowerCase())
-  );
+  const data = posts.filter((post) =>
+    post.toLowerCase().includes(setSearchItem.toLowerCase())
+  )
 
-  setFilteredUsers(filteredItems);
+  setPosts(data)
 
   return (
     <div>
@@ -35,7 +34,6 @@ const Search = () => {
         onChange={handleInputChange}
         placeholder='Type to search'
       />
-      {filteredUsers}
     </div>
   )
 }
